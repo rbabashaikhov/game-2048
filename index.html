@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2048</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>2048</h1>
+      <div class="scores">
+        <div class="score-box">
+          <span class="score-label">Счёт</span>
+          <span id="score" class="score-value">0</span>
+        </div>
+        <div class="score-box">
+          <span class="score-label">Рекорд</span>
+          <span id="best" class="score-value">0</span>
+        </div>
+      </div>
+      <button type="button" id="btn-new-game" class="btn-new-game">Новая игра</button>
+    </header>
+
+    <main class="main">
+      <p class="hint">Объединяйте плитки с одинаковыми числами и получите плитку <strong>2048</strong>! Управление: стрелки или свайп.</p>
+
+      <div class="game-container">
+        <div class="grid-container">
+          <div id="grid" class="grid" role="grid" aria-label="Игровое поле 2048">
+            <!-- 4x4 background cells -->
+            <div class="grid-background">
+              <div class="cell-bg"></div>
+              <div class="cell-bg"></div>
+              <div class="cell-bg"></div>
+              <div class="cell-bg"></div>
+              <div class="cell-bg"></div>
+              <div class="cell-bg"></div>
+              <div class="cell-bg"></div>
+              <div class="cell-bg"></div>
+              <div class="cell-bg"></div>
+              <div class="cell-bg"></div>
+              <div class="cell-bg"></div>
+              <div class="cell-bg"></div>
+              <div class="cell-bg"></div>
+              <div class="cell-bg"></div>
+              <div class="cell-bg"></div>
+              <div class="cell-bg"></div>
+            </div>
+            <!-- Tiles rendered by JS -->
+            <div id="tiles-container" class="tiles-container"></div>
+          </div>
+        </div>
+
+        <div id="overlay-win" class="overlay overlay-win" aria-hidden="true">
+          <div class="overlay-box">
+            <p>Победа!</p>
+            <button type="button" id="btn-keep-playing" class="btn-overlay">Продолжить</button>
+            <button type="button" id="btn-restart-win" class="btn-overlay">Новая игра</button>
+          </div>
+        </div>
+        <div id="overlay-gameover" class="overlay overlay-gameover" aria-hidden="true">
+          <div class="overlay-box">
+            <p>Игра окончена</p>
+            <button type="button" id="btn-restart-overlay" class="btn-overlay">Новая игра</button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

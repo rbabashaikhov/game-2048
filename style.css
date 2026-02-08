@@ -1,0 +1,274 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  font-size: 18px;
+  background: #faf8ef;
+  color: #776e65;
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 72px;
+  font-weight: bold;
+  color: #776e65;
+}
+
+.scores {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.score-box {
+  background: #bbada0;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-align: center;
+  min-width: 60px;
+}
+
+.score-label {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.score-value {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.btn-new-game {
+  background: #8f7a66;
+  color: #f9f6f2;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-new-game:hover {
+  background: #9f8a76;
+}
+
+.hint {
+  margin: 0 0 20px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.game-container {
+  position: relative;
+  background: #bbada0;
+  border-radius: 10px;
+  padding: 12px;
+}
+
+.grid-container {
+  position: relative;
+}
+
+.grid {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  aspect-ratio: 1;
+}
+
+.grid-background {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 12px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.cell-bg {
+  background: #cdc1b4;
+  border-radius: 6px;
+}
+
+.tiles-container {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 12px;
+  padding: 0;
+  pointer-events: none;
+}
+
+.tile {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: clamp(28px, 6vw, 48px);
+  border-radius: 6px;
+  grid-column: calc(var(--col) + 1);
+  grid-row: calc(var(--row) + 1);
+  transition: transform 0.1s ease-out;
+  pointer-events: none;
+}
+
+/* Tile colors (classic 2048 palette) */
+.tile-2 {
+  background: #eee4da;
+  color: #776e65;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.05);
+}
+
+.tile-4 {
+  background: #ede0c8;
+  color: #776e65;
+}
+
+.tile-8 {
+  background: #f2b179;
+  color: #f9f6f2;
+}
+
+.tile-16 {
+  background: #f59563;
+  color: #f9f6f2;
+}
+
+.tile-32 {
+  background: #f67c5f;
+  color: #f9f6f2;
+}
+
+.tile-64 {
+  background: #f65e3b;
+  color: #f9f6f2;
+}
+
+.tile-128 {
+  background: #edcf72;
+  color: #f9f6f2;
+  font-size: clamp(24px, 5vw, 40px);
+}
+
+.tile-256 {
+  background: #edcc61;
+  color: #f9f6f2;
+  font-size: clamp(24px, 5vw, 40px);
+}
+
+.tile-512 {
+  background: #edc850;
+  color: #f9f6f2;
+  font-size: clamp(24px, 5vw, 40px);
+}
+
+.tile-1024 {
+  background: #edc53f;
+  color: #f9f6f2;
+  font-size: clamp(20px, 4vw, 32px);
+}
+
+.tile-2048 {
+  background: #edc22e;
+  color: #f9f6f2;
+  font-size: clamp(20px, 4vw, 32px);
+}
+
+.tile-4096,
+.tile-8192 {
+  background: #3c3a32;
+  color: #f9f6f2;
+  font-size: clamp(18px, 3.5vw, 28px);
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(238, 228, 218, 0.85);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.overlay[aria-hidden="true"] {
+  display: none;
+}
+
+.overlay-box {
+  background: #fff;
+  padding: 24px 32px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+.overlay-box p {
+  margin: 0 0 16px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #776e65;
+}
+
+.btn-overlay {
+  display: inline-block;
+  background: #8f7a66;
+  color: #f9f6f2;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 4px;
+}
+
+.btn-overlay:hover {
+  background: #9f8a76;
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 48px;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .scores {
+    margin-left: 0;
+  }
+}
